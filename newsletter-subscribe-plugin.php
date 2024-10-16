@@ -78,3 +78,53 @@ function newsletter_subscribe_register_settings() {
   register_setting('newsletter-subscribe-settings-group', 'provider_api_key');
   register_setting('newsletter-subscribe-settings-group', 'form_custom_css');
 }
+
+function subscribe_newsletter() {
+  check_ajax_referer('newsletter-subscribe-nonce', 'nonce');
+
+  $email = sanitiza_email($_POST['email']);
+  
+  if (!is_email($email)) {
+    wp_send_json_error(array('message' => 'Invalid Email');
+  }
+
+  $api_key = get_option('provider_api_key');
+  $api_url = get_option('provider_api_url');
+
+  if (!$api_key || !$api_url) {
+    wp_send_json_error(array('message' => 'Missing provider API Key or URL'));
+
+  $response = wp_remote_post($api_url, array(
+    'headers' => array(
+      'Content-Type' => 'application/json',
+      'Authorization' => 'Bearer ' . $api_key
+    ),
+    'body' => json_encode(array('email' => $email))
+  ));
+
+  if (is_wp_error($response)) {
+    wp_send_json_error(array('message' => 'Error connecting to provider API'));
+  }
+ 
+  $body = wp_remote_retrieve_body($response);
+  $result = json_decode($body, true);
+
+  if (isset($result['status']) && $result['status'] == 'sucess') {
+        wp_send_json_success(array('message' => '¡Suscripción exitosa!'));
+    } else {
+        wp_send_json_error(array('message' => 'Error al suscribirse.'));
+    }
+  }
+}
+
+add_action('wp_ajax_subscribe_newsletter', 'subscribe_newsletter');
+add_action('wp_ajax_nopriv_subscribe_newsletter', 'subscribe_newsletter');
+
+fucntion form_custom_css() {
+  $custom_css = get_option('form_custom_css');
+
+  if (!empty($custom_css)) {
+    echo '<style type=text/css>' . $custom_css . '</style>';
+  }
+}
+add_action('wp_head', 'form_custom_css');
