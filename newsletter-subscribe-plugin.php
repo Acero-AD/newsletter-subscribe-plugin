@@ -3,7 +3,7 @@
 /**
 * Plugin Name: Newsletter Subscribe
 * Description: Plugin that allows users to create a newsletter subscription form.
-* Version: 0.1.1
+* Version: 0.2
 * Author: Diego Acero (Somosbytes)
 * Author URI: http://www.somosbytes.es
 */
@@ -61,6 +61,16 @@ function newsletter_subscribe_plugin_page() {
                     <td><input type="text" name="provider_api_key" value="<?php echo esc_attr(get_option('provider_api_key')); ?>" style="width: 100%;"/></td>
                 </tr>
                 <tr valign="top">
+                    <th scope="row">Plantilla CSS</th>
+                    <td>
+                        <select name="form_css_template">
+                            <option value="simple-clean" <?php selected('simple', get_option('form_css_template'), 'simple-clean'); ?>>Simple Clean</option>
+                            <option value="modern-card" <?php selected(get_option('form_css_template'), 'modern-card'); ?>>Modern Card</option>
+                            <option value="colorful" <?php selected(get_option('form_css_template'), 'colorful'); ?>>Colorful</option> 
+                        </select>
+                    </td>
+                </tr>
+                <tr valign="top">
                     <th scope="row">CSS Personalizado</th>
                     <td><textarea name="form_custom_css" style="width: 100%; height: 150px;"><?php echo esc_attr(get_option('form_custom_css')); ?></textarea></td>
                 </tr>
@@ -77,6 +87,7 @@ function newsletter_subscribe_register_settings() {
   register_setting('newsletter-subscribe-settings-group', 'provider_api_url');
   register_setting('newsletter-subscribe-settings-group', 'provider_api_key');
   register_setting('newsletter-subscribe-settings-group', 'form_custom_css');
+  register_setting('newsletter-subscribe-settings-group', 'form_css_template', array('default' => 'simple-clean'));
 }
 
 function nsp_enqueue_scripts() {
@@ -131,10 +142,15 @@ add_action('wp_ajax_subscribe_newsletter', 'subscribe_newsletter');
 add_action('wp_ajax_nopriv_subscribe_newsletter', 'subscribe_newsletter');
 
 function form_custom_css() {
+  $template = get_option('form_css_template', 'simple-clean');
   $custom_css = get_option('form_custom_css');
 
   if (!empty($custom_css)) {
     echo '<style type=text/css>' . $custom_css . '</style>';
+} else {
+    $template_css = file_get_contents(plugin_dir_path(__FILE__) . 'css/' . $template . '.css');
+    echo '<style type="text/css">' . $template_css . '</style>';
   }
+
 }
 add_action('wp_head', 'form_custom_css');

@@ -1,0 +1,37 @@
+#newsletterSubscribeContainer {
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+#newsletterSubscribeForm {
+  display: flex;
+  gap: 10px;
+}
+
+#newsletterSubscriptionEmail {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#newsletterSubscribeButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#newsletterSubscribeButton:hover {
+  background-color: #0056b3;
+}
+
+#newsletterSubscribeMessage {
+  margin-top: 10px;
+  text-align: center;
+  color: #28a745;
+}

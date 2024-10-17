@@ -1,0 +1,45 @@
+#newsletterSubscribeContainer {
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#newsletterSubscribeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#newsletterSubscriptionEmail {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#newsletterSubscribeButton {
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#newsletterSubscribeButton:hover {
+  background-color: #45a049;
+}
+
+#newsletterSubscribeMessage {
+  margin-top: 15px;
+  text-align: center;
+  color: #4CAF50;
+  font-weight: bold;
+}
