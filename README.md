@@ -13,10 +13,11 @@ Here is were I had one of those 'Aja!' moments that people talk about and decide
 ## Templates.
 
 ### Simple Clean.
-
+![clean](https://github.com/user-attachments/assets/0b5b585b-264a-4b8d-a014-8bdc4c821b11)
 ### Modern Card
-
+![modern_card](https://github.com/user-attachments/assets/a61892fd-c7ee-49cd-8702-139152910445)
 ### Colorful
+![colorful](https://github.com/user-attachments/assets/cbd4fdf4-0758-4a12-a363-433e55525a87)
 
 ## Custom css
 The for os wrapped by a `<div>` so that you have more control over it.
