@@ -10,6 +10,14 @@ Here is were I had one of those 'Aja!' moments that people talk about and decide
 3. Configure plugin using the settings view (HIGLY recommended to configure some css)
 4. Add the form where you want it to show using the shortcode `[NSP-form]`
 
+## Templates.
+
+### Simple Clean.
+
+### Modern Card
+
+### Colorful
+
 ## Custom css
 The for os wrapped by a `<div>` so that you have more control over it.
 The ids for the css selectors are:
@@ -21,6 +29,5 @@ The ids for the css selectors are:
 
 
 ## Current version.
-### v0.1-beta
-This version is stable in the way that you can configure your **API url, the API key and custom css**.
-The current form state is quite ugly. You have to make it look good using css.
+### v0.1
+This version adds the hability to use 3 templates. Keeps the css custom field.
