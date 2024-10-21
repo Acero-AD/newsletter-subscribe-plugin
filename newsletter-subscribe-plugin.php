@@ -3,7 +3,7 @@
 /**
 * Plugin Name: Newsletter Subscribe
 * Description: Plugin that allows users to create a newsletter subscription form.
-* Version: 0.2
+* Version: 0.1
 * Author: Diego Acero (Somosbytes)
 * Author URI: http://www.somosbytes.es
 */
